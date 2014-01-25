@@ -14,3 +14,9 @@ To test the library, you need to install the following:
 Then:
 
     python main.py
+
+You can then see the Mandelbrot Set. You can also zoom in with left click:
+
+![Mandelbrot Set](http://raw.github.com/Gagaro/pyfractal/master/doc/fractal1.png)
+
+![Zoom In](http://raw.github.com/Gagaro/pyfractal/master/doc/fractal3.png)

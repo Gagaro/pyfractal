@@ -66,7 +66,7 @@ def main():
                     c2 = fractal.get_c(max_x, max_y)
                     fractal = mandelbrot.Mandelbrot(width, height,
                                                     min_r=c1[0], max_r=c2[0],
-                                                    min_i=c1[0])
+                                                    min_i=c1[1])
                     fractal_surface = draw_fractal(screen, fractal)
                     click = None
             pygame.display.flip()

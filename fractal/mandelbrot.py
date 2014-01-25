@@ -13,13 +13,12 @@ class Mandelbrot(object):
         self.width = width
         self.height = height
         self.iterations=iterations
-
         self.pre_height = (self.max_r - self.min_r) / (self.width - 1)
         self.pre_width = (self.max_i - self.min_i) / (self.height - 1)
 
     def get_c(self, x, y):
         real = self.min_r + x * self.pre_height
-        imaginary = self.max_i - y * self.pre_width
+        imaginary = self.min_i + y * self.pre_width
         return (real, imaginary)
 
     def get(self, x, y):
