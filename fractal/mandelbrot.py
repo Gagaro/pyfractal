@@ -1,3 +1,12 @@
+import logging
+
+try:
+    import cmandelbrot
+    CMANDELBROT = True
+except ImportError:
+    CMANDELBROT = False
+    logging.warning("cmandelbrot not present, using python implementation.")
+
 ITERATIONS = 300
 
 
@@ -23,9 +32,11 @@ class Mandelbrot(object):
         return self.mandelbrot(*(self.get_c(x, y)))
 
     def mandelbrot(self, real, imaginary):
+        if CMANDELBROT:
+            return cmandelbrot.mandelbrot(real, imaginary, self.iterations)
         c_real = real
         c_imaginary = imaginary
-        for i in range(self.iterations):
+        for i in xrange(self.iterations):
             if pow(real, 2) + pow(imaginary, 2) > 4:
                 return i
             tmp_imaginary = imaginary
