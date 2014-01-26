@@ -1,3 +1,4 @@
+import os
 import pygame
 
 from fractal import mandelbrot
@@ -51,8 +52,21 @@ class Screen(object):
         self.screen.blit(label, (10, 10))
 
 
-def application(width, height, min_r=-2.0, max_r=1.0, min_i=-1.5):
-    fractal = mandelbrot.Mandelbrot(width, height, min_r, max_r, min_i)
+def new_screen(width, height, c1, c2):
+    pygame.quit()
+    pygame.init()
+    pygame.font.init()
+
+    fractal = mandelbrot.Mandelbrot(
+        width, height, min_r=c1[0], max_r=c2[0], min_i=c1[1]
+        )
+    screen = Screen(width, height, fractal)
+    screen.draw_fractal()
+    return screen
+
+
+def application(width, height):
+    fractal = mandelbrot.Mandelbrot(width, height)
     screen = Screen(width, height, fractal)
     screen.draw_fractal()
     while True:
@@ -73,7 +87,17 @@ def application(width, height, min_r=-2.0, max_r=1.0, min_i=-1.5):
                     max_y = max(click[1], event.pos[1])
                     c1 = fractal.get_c(min_x, min_y)
                     c2 = fractal.get_c(max_x, max_y)
-                    # @TODO
+
+                    #if os.fork() == 0:
+                    #    del screen
+                    #    screen = new_screen(width, height, c1, c2)
+                    #    break
+                    fractal = mandelbrot.Mandelbrot(
+                        width, height, min_r=c1[0], max_r=c2[0], min_i=c1[1]
+                        )
+                    screen = Screen(width, height, fractal)
+                    screen.draw_fractal()
+
                     screen.set_click(None)
             pygame.display.flip()
 
