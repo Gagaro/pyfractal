@@ -8,12 +8,17 @@ Testing
 
 To test the library, you need to install the following:
 
-    sudo apt-get install libsdl2.0-dev libsdl-ttf2.0-dev
-    pip install -r requirements.txt
+   sudo apt-get install python-pygame
+
+Or if you are using virtualenv:
+
+   sudo apt-get build-dep python-pygame
+   sudo apt-get install mercurial
+   pip install -r requirements.txt
 
 Then:
 
-    python main.py
+   python main.py
 
 You can then see the Mandelbrot Set. You can also zoom in with left click:
 
