@@ -1,5 +1,3 @@
-from math import sqrt
-
 ITERATIONS = 300
 
 
