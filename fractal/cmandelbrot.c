@@ -3,15 +3,15 @@
 static PyObject *
 mandelbrot(PyObject *self, PyObject *args)
 {
-  int c_real,
+  int iterations,
+    i;
+  float c_real,
     c_imaginary,
-    iterations,
-    i,
     real,
     imaginary,
     tmp;
 
-  if (!PyArg_ParseTuple(args, "iii", &c_real, &c_imaginary, &iterations))
+  if (!PyArg_ParseTuple(args, "ffi", &c_real, &c_imaginary, &iterations))
     return NULL;
   real = c_real;
   imaginary = c_imaginary;
@@ -27,7 +27,7 @@ mandelbrot(PyObject *self, PyObject *args)
 }
 
 static PyMethodDef Methods[] = {
-      {"cmandelbrot",  mandelbrot, METH_VARARGS,
+      {"mandelbrot",  mandelbrot, METH_VARARGS,
        "Calculate number of iterations for a given complex."},
       {NULL, NULL, 0, NULL}        /* Sentinel */
 };
