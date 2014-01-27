@@ -34,12 +34,10 @@ class Mandelbrot(object):
     def mandelbrot(self, real, imaginary):
         if CMANDELBROT:
             return cmandelbrot.mandelbrot(real, imaginary, self.iterations)
-        c_real = real
-        c_imaginary = imaginary
+        c = complex(real, imaginary)
+        z = c
         for i in xrange(self.iterations):
-            if pow(real, 2) + pow(imaginary, 2) > 4:
+            if abs(z) > 2:
                 return i
-            tmp_imaginary = imaginary
-            imaginary = 2 * real * imaginary + c_imaginary
-            real = real * real - tmp_imaginary * tmp_imaginary + c_real
+            z = z * z + c
         return self.iterations
