@@ -25,3 +25,15 @@ mandelbrot(PyObject *self, PyObject *args)
     }
   return Py_BuildValue("i", i);
 }
+
+static PyMethodDef Methods[] = {
+      {"cmandelbrot",  mandelbrot, METH_VARARGS,
+       "Calculate number of iterations for a given complex."},
+      {NULL, NULL, 0, NULL}        /* Sentinel */
+};
+
+PyMODINIT_FUNC
+initcmandelbrot(void)
+{
+  (void) Py_InitModule("cmandelbrot", Methods);
+}
