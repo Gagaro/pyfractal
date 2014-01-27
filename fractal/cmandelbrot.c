@@ -5,13 +5,13 @@ mandelbrot(PyObject *self, PyObject *args)
 {
   int iterations,
     i;
-  float c_real,
+  double c_real,
     c_imaginary,
     real,
     imaginary,
     tmp;
 
-  if (!PyArg_ParseTuple(args, "ffi", &c_real, &c_imaginary, &iterations))
+  if (!PyArg_ParseTuple(args, "ddi", &c_real, &c_imaginary, &iterations))
     return NULL;
   real = c_real;
   imaginary = c_imaginary;
