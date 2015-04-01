@@ -25,3 +25,9 @@ You can then see the Mandelbrot Set. You can also zoom in with left click:
 ![Mandelbrot Set](http://raw.github.com/Gagaro/pyfractal/master/doc/fractal1.png)
 
 ![Zoom In](http://raw.github.com/Gagaro/pyfractal/master/doc/fractal3.png)
+
+Compiling cmandelbrot
+=====================
+
+cc -fPIC -c -I/usr/include/python2.7/ cmandelbrot.c -o cmandelbrot.o
+cc -shared cmandelbrot.o -o cmandelbrot.so
